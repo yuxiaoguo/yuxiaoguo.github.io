@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Yu-Xiao Guo, Yuxiao Guo, MSRA, homepage" />
+    <style>
+        @import "style.css";
+    </style>
+    <title>Homepage - Yu-Xiao Guo</title>
+</head>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        border-spacing: 10px;
+    }
+    td {
+        padding: 10px;
+        vertical-align: top;
+        margin-left: 0px;
+        margin-right: auto;
+    }
+</style>
+
+<script>
+function gen_self_intro() {
+    var table = document.getElementById("intro_section");
+    var row = table.insertRow(0);
+    var photo = row.insertCell(0);
+    photo.innerHTML = "<img src=\"photo_me.jpg\" width=\"288\" height=\"216\" alt=\"Photo me\" />";
+    var text = row.insertCell(1);
+    // assign inner html from a html file
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "introduction/intro.html", false);
+    xmlhttp.send();
+    text.innerHTML = xmlhttp.responseText;
+}
+function gen_publications() {
+    var table = document.getElementById("publications");
+    var pub_list = ["Swin3D", "DTSR", "SGSDI", "VVNet", "OCNN"];
+    for (var i = 0; i < pub_list.length; i++) {
+        var row = table.insertRow(i);
+        var photo = row.insertCell(0);
+        photo.innerHTML = "<img src=\"publications/" + pub_list[i] + "/main.jpg\" width=\"135px\" height=\"135px\" alt=\"profile picture\" />";
+        var text = row.insertCell(1);
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", "publications/" + pub_list[i] + "/pub.html", false);
+        xmlhttp.send();
+        text.innerHTML = xmlhttp.responseText;
+    }
+}
+function gen_all(){
+    gen_self_intro();
+    gen_publications();
+}
+</script>
+
+<body onload="gen_all()">
+    <div class="container">
+        <div class="content">
+            <table id="intro_section"></table>
+            <h4><font size="5">Publications</font></h4>
+            <table id="publications"></table>
+            <p align="center">&copy; Yu-Xiao Guo. Last update: Apr 17, 2023.</p>
+            </script>
+        </div>
+    </div>
+</body>
+</html>
